@@ -19,7 +19,7 @@ Build requirements
 * Watch files with gulp
 ```sh
 
-cd joelfolio
+cd folder
 npm install -g gulp
 npm install gulp-concat
 npm install gulp-uglify
