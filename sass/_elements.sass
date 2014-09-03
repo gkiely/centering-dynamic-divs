@@ -1,3 +1,59 @@
 //============================
 // Reusable site wide Elements
 //============================
+$wh: rgba(255,255,255,0.7)
+
+.setup
+	+h(90)
+	background: orange
+	+mb(10)
+
+.height
+	+wh(20)
+	background: $wh
+
+.noHeight, .noHeight2, .noHeight3
+	background: $wh
+	+w(170)
+
+
+// position: absolute
+.kheight
+	position: relative
+.height
+	position: absolute
+	+trblma
+
+
+
+// Ghost Element
+.dib
+	position: relative
+	height: 100%
+	font-size: 0
+	+tac
+	&:before
+		content: ""
+		display: inline-block
+		height: 100%
+		vertical-align: middle
+.noHeight2
+	+tal
+	font-size: 16px
+	display: inline-block
+	vertical-align: middle
+
+
+// display: table
+.tbl
+	height: 100%
+	display: table
+	margin: 0 auto
+.noHeight
+	display: table-cell
+	vertical-align: middle
+	background: none
+	.innerText
+		background: $wh
+
+

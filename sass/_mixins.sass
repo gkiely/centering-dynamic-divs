@@ -37,6 +37,8 @@
 
 =tac
 	text-align: center
+=tal
+	text-align: left
 
 =test
 	background: orange !important
@@ -55,6 +57,9 @@
 //===================
 =w($w, $em: 16)
 	width: pem($w, $em)
+
+=h($h, $em: 16) 
+	height: pem($h, $em)
 
 //width perc, defaults to mobile
 =wp($w, $w2: 320)
@@ -76,8 +81,15 @@
 	width: pem($w, $base)
 	height: pem($h, $base)
 
-=h($h, $em: 16) 
-	height: pem($h, $em)
+
+///// margins /////
+=mb($em)
+	margin-bottom: m($em)
+
+
+///// padding /////
+=p($v1, $v2, $v3: $v1, $v4: $v2)
+	padding: m($v1) m($v2) m($v3) m($v4)
 
 =br($val)
 	border-radius: $val

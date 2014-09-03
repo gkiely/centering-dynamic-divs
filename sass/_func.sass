@@ -3,15 +3,15 @@
 
 //Used to convert PX to EMs for multiple properties or values or both.
 //$base is an optional measurement that allows making measurements relative to the parent font size rather than the current. Also accepts a list of lists (instead a list of values) for properties that accept multiple lists of values. Only numbers of converted; everything else is passed through
-@function pem($pxval, $base: 16)
+@function m($pxval, $base: 16)
 	@return #{$pxval / $base}em
 
-@function m($pxval, $base: 16)
+//old method name
+@function pem($pxval, $base: 16)
 	@return #{$pxval / $base}em
 
 @function rem($px)
 	@return #{$px / $base}rem
-
 
 @function img-path($path)
 	@return url("../img/mobile/#{$path}") //dev

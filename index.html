@@ -12,7 +12,30 @@
 	</head>
 	<body>
 
-		<div class="wrapper">
+		<div id="module">
+			<h3>Known Height</h3>
+			Best way if you know height
+			<div class="setup kheight">
+				<div class="height"></div>
+			</div>
+			<h3>Unknown Height: ghost pseudo/inline block</h3>
+			Requires 2 divs, reset font-size<br>
+			<i>+tac to horiz</i>
+			<div class="setup">
+				<div class="dib">
+					<div class="noHeight2">test yahh asdfasdf asdf asdf</div>
+				</div>
+			</div>
+
+			<h3>Unknown Height: display table</h3>
+			Requires 3 divs <br><i>margin-auto to horiz</i>
+			<div class="setup ukheight">
+				<div class="tbl">
+					<div class="noHeight">
+						<div class="innerText">test yahh asdfasdf asdf asdf</div>
+					</div>
+				</div>
+			</div>		
 		</div>
 
 
