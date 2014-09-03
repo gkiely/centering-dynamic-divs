@@ -1,4 +1,4 @@
-CSS Testing
+Starter Project
 =================
 
 **Contributors:** Grant Kiely
