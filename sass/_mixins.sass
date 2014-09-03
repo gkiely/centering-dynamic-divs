@@ -1,0 +1,212 @@
+//================
+// Utility mixins
+//================
+=clearfix
+	&:after
+		content: ""
+		display: table
+		clear: both
+=dib
+	display: inline-block
+	margin-right: -4px
+
+=hide
+	display: none
+
+=hideText
+	text-indent: 100%
+	white-space: nowrap
+	overflow: hidden
+
+=resetBtn
+	outline: 0
+	border: 0
+	background: none
+	margin: 0
+	padding: 0
+	&::-moz-focus-inner 
+		padding: 0
+		border: 0
+
+=resetLink
+	text-decoration: none
+	color: inherit
+
+=ttu
+	text-transform: uppercase
+
+=tac
+	text-align: center
+
+=test
+	background: orange !important
+
+=nos
+	-webkit-touch-callout: none
+	-webkit-user-select: none
+	-khtml-user-select: none
+	-moz-user-select: none
+	-ms-user-select: none
+	user-select: none
+
+
+//===================
+// Mixins with params
+//===================
+=w($w, $em: 16)
+	width: pem($w, $em)
+
+//width perc, defaults to mobile
+=wp($w, $w2: 320)
+	width: pc($w, $w2)
+
+=wh($w, $h:$w, $em: 16)
+	width: pem($w, $em)
+	height: pem($h, $em)
+
+=whp($w, $h: $w, $p: 320)
+	+wp($w, $p)
+	+h($h)
+
+=wh100
+	width: 100%
+	height: 100%
+
+=whe($w, $h:$w, $base:16)
+	width: pem($w, $base)
+	height: pem($h, $base)
+
+=h($h, $em: 16) 
+	height: pem($h, $em)
+
+=br($val)
+	border-radius: $val
+
+
+=lr($v1: 0, $v2: $v1)
+	left: $v1
+	right: $v2
+
+=tb($v1:0, $v2: $v1)
+	top: $v1
+	bottom: $v2
+
+=tbma($v1:0, $v2:$v1)
+	+tb($v1, $v2)
+	margin: auto 0
+
+
+=lrma($v1:0, $v2:$v1)
+	+lr($v1, $v2)
+	margin: 0 auto
+
+=media($mq, $val:0)
+	@if $mq == "mw"
+		@media #{"(max-width: #{$val}px)" }
+			@content
+	@else 
+		@media #{$mq}
+			@content
+
+
+=trbl($v1: 0, $v2: $v1, $v3: $v1, $v4: $v2)
+	top: $v1
+	right: $v2
+	bottom: $v3
+	left: $v4
+
+=trblma($v1: 0, $v2: $v1, $v3: $v1, $v4: $v2)
+	+trbl($v1, $v2, $v3, $v4)
+	margin: auto
+
+=svg($svg)
+	background: url('data:image/svg+xml;utf8, #{$svg}')
+
+
+=svgs($posX, $posY)
+	background: img-path("svg-sprite.svg") no-repeat
+	background-size: cover
+	background-position: $posX $posY
+
+=bg-gradient($fallback, $from, $to)
+	background: $fallback
+	background: -webkit-gradient(linear, left top, left bottom, from($from), to($to))
+	background: -moz-linear-gradient(top, $from, $to)
+	background: -ms-linear-gradient(top, $from, $to)
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr:#{$from}, endColorstr:#{$to})
+	background: gradient(linear, top, bottom, from($from), to($to))
+
+
+=triangle($dir, $size, $color)
+	border: $size transparent solid
+	@if $dir == "top" or $dir == "up" or $dir == "left" or $dir == "before"
+		&:before
+			@if $dir == "top" or $dir == "up"
+				border-bottom-color: $color
+			@else if $dir == "right" or $dir == "after"
+				border-left-color: $color
+	@else if $dir == "bottom" or $dir == "down" or $dir == "left" or $dir == "before"
+		&:after
+			@if $dir == "bottom" or $dir == "down"
+				border-top-color: $color
+			@else if $dir == "left" or $dir == "before"
+				border-right-color: $color
+
+=triangle($dir, $w, $h, $color)
+	border: $h transparent solid
+
+	@if $dir == "top" or $dir == "up"
+		border-bottom-color: $color
+		border-bottom-width: $w
+	@else if $dir == "right" or $dir == "after"
+		border-left-color: $color
+		border-left-width: $w
+	@else if $dir == "bottom" or $dir == "down"
+		border-top-color: $color
+		border-top-width: $w
+	@else if $dir == "left" or $dir == "before"
+		border-right-color: $color
+		border-right-width: $w
+
+=placeholder-color($c)
+	&::-webkit-input-placeholder
+		color: $c
+	&::-moz-placeholder /* Firefox 19+ */
+		color: $c
+	&:-ms-input-placeholder
+		color: $c
+
+=placeholder-weight($val)
+	&::-webkit-input-placeholder
+		font-weight: $val
+	&::-moz-placeholder /* Firefox 19+ */
+		font-weight: $val
+	&:-ms-input-placeholder
+		font-weight: $val
+
+//mostly here for an example
+=arrow-up($c: black)
+	width: 0 
+	height: 0 
+	border-left: 5px solid transparent
+	border-right: 5px solid transparent
+	border-bottom: 5px solid $c
+
+
+=flipv
+	-moz-transform: scaleY(-1)
+	-o-transform: scaleY(-1)
+	-webkit-transform: scaleY(-1)
+	-ms-transform: scaleY(-1)
+	transform: scaleY(-1)
+	filter: flipv /*IE*/
+	-ms-filter: "flipv" /*IE*/
+
+=fliph
+	-moz-transform: scaleX(-1)
+	-webkit-transform: scaleX(-1)
+	-o-transform: scaleX(-1)
+	-ms-transform: scaleX(-1)
+	transform: scaleX(-1)
+	-ms-filter: fliph /*IE*/
+	filter: fliph /*IE*/
